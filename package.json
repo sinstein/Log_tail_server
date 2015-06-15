@@ -1,0 +1,12 @@
+{
+  "name": "log-server",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js test.txt 9090"
+  },
+  "dependencies": {
+    "socket.io": "latest"
+    "line-reader": "latest"
+  }
+}
