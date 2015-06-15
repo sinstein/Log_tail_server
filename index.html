@@ -13,7 +13,7 @@
                     $('#incomingLog').append($('<li></li>').text(message));
                 });
                 iosocket.on('disconnect', function() {
-                    $('#incomingLog').append('<li>Disconnected</li>');
+                    $('#incomingLog').append('<h3>Disconnected<h3>');
                 });
             });
         });
