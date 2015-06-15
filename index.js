@@ -1,63 +1,3 @@
-/* var fs = require('fs'),
-  http = require('http'),
-  socketio = require('socket.io'),
-  lineReader = require('line-reader');
-
-var port = process.argv[3];
-var file = process.argv[2];
-var previousLogs = fs.readFileSync(file, 'utf8');
-var socket = socketio.listen(server);
-
-if (process.argv.length < 4) {
-  console.log("Usage: node app.js [logFile] [port]");
-  process.exit(-1);
-}
-
-var server = http.createServer(function(req, res) {
-  res.writeHead(200, {
-    'Content-type': 'text/html'
-  });
-  res.end(fs.readFileSync(__dirname + '/index.html'));
-}).listen(port, function() {
-  console.log('Listening at: http://localhost:' + port);
-});
-
-var continueFrom = 0;
-var arr = new Array();
-
-lineReader.eachLine(file,function(line, last) {
-	continueFrom += line.length;
-	if(arr.length < 10) {
-		arr.push(line);
-	}
-	else {
-		arr.shift();
-		arr.push(line);
-	}
-});
-
-
-fs.watch(file, function(event, fname) {
-  if (event == 'change') {
-    var readStream = fs.createReadStream(file, {
-      start: continueFrom
-    });
-    var text = '';
-    readStream.on('data', function(chunk) {
-      text += chunk.toString();
-    });
-    readStream.on('end', function() {
-      socket.emit('message', text);
-    });
-  }
-});
-
-var text = "";
-socket.on('connection', function() {
-  socket.emit('message',arr);
-});
-*/
-
 var fs = require('fs'),
   http = require('http'),
   io = require('socket.io'),
@@ -103,7 +43,7 @@ fs.watch(file, function(event, fname) {
     });
     var text = '';
     readStream.on('data', function(chunk) {
-      
+
       text += chunk.toString();
     });
     readStream.on('end', function() {
