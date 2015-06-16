@@ -7,7 +7,7 @@
             var iosocket = io.connect();
  
             iosocket.on('connect', function () {
-                $('#incomingLog').append($('<h2>Connected to Log</h2>'));
+                $('#incomingLog').append($('<h3>Connected to Log</h3>'));
  
                 iosocket.on('message', function(message) {
                     $('#incomingLog').append($('<li></li>').text(message));
